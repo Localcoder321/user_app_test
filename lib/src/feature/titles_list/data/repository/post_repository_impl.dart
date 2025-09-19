@@ -8,7 +8,7 @@ class PostRepositoryImpl implements PostRepository {
 
   @override
   Future<List<PostEntity>> getPosts() async {
-    final models = await remoteDatasource.fetchPosts();
+    final models = await remoteDatasource.getPosts();
     return models;
   }
 }

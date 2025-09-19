@@ -1,7 +1,7 @@
 import 'package:user_app_test/src/feature/titles_list/domain/entity/post_entity.dart';
 
 class PostModel extends PostEntity {
-  PostModel({
+  const PostModel({
     required int userId,
     required int id,
     required String title,
