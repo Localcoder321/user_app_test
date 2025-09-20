@@ -52,21 +52,24 @@ class _PostsListPageState extends State<PostsListPage> {
                 itemCount: state.filteredPosts.length,
                 itemBuilder: (context, index) {
                   final post = state.filteredPosts[index];
-                  return ListTile(
-                    title: Text(post.title, style: TextStyle(fontSize: 14)),
-                    subtitle: Text(
-                      post.body,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                  return Card(
+                    elevation: 4,
+                    child: ListTile(
+                      title: Text(post.title, style: TextStyle(fontSize: 14)),
+                      subtitle: Text(
+                        post.body,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => PostDetailPage(post: post),
+                          ),
+                        );
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => PostDetailPage(post: post),
-                        ),
-                      );
-                    },
                   );
                 },
               ),

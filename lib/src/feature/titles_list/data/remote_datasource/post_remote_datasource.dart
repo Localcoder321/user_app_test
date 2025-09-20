@@ -13,7 +13,11 @@ class PostRemoteDatasourceImpl implements PostRemoteDatasource {
   PostRemoteDatasourceImpl({required this.client});
 
   factory PostRemoteDatasourceImpl.create() {
-    final dio = Dio();
+    final dio = Dio(
+      BaseOptions(
+        headers: {"Accept": "application/json", "User-Agent": "Flutter-App"},
+      ),
+    );
 
     dio.interceptors.add(
       InterceptorsWrapper(

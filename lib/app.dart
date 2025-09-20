@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_app_test/src/feature/titles_list/domain/usecase/get_posts_usecase.dart';
+import 'package:user_app_test/src/feature/titles_list/presentation/bloc/posts_bloc.dart';
 import 'package:user_app_test/src/feature/titles_list/presentation/pages/posts_list_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,7 +15,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.system,
-      home: const PostsListPage(),
+      home: BlocProvider(
+        create: (_) => PostsBloc(getPosts: getPosts),
+        child: const PostsListPage(),
+      ),
     );
   }
 }
